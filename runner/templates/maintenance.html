@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <title>Maintenance Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style type="text/css">
+        a {
+        color: black!important;
+    }
+    #div1{
+        border-radius:7px!important;
+        margin-top: 20px;
+    }
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: rgb(0, 255, 238);
+   color: white;
+   text-align: center;
+    }
+ul a {
+  color:inherit;
+  text-decoration:none !important;
+  opacity:0.8;
+}
+
+    </style>
+</head>
+{% block content %}
+<body class="center" style=" background-color: #f5f5f5">
+    <div id="div1" class="container shadow p-3 mb-5 bg-body rounded border border-5" style="border-radius:5px">
+            <div class="auto-style76">
+                <a class="navbar-brand" href="#" style="max-width:158px;  width:110px;"><img style="width:110px!important;" src="{{ url_for('static', filename='images/MMCS.png') }}" width="80px" style="padding-bottom:6px"></a>
+                <a class="navbar-brand" style="font-size:25px">Maintenance Report </a>
+                <a class="navbar-brand rounded float-end" href="#" style="max-width:158px;"><img src="{{ url_for('static', filename='images/Monorail_Site.png') }}" width="60px" style="padding-bottom:6px;" ></a>
+                <div id="current_date" style="margin-left:80px ;">
+                    2 days ago
+                  </div>
+                <table class="table table-success table-striped table-hover " style="margin-top:30px ;">
+                    <tr><th>Train ID</th><th>Schedule ID</th><th>Maintenance start Time</th><th>Maintenance end Time</th><th>New Train ID</th></tr>
+                    {% for maintenance in maintenances %}
+                    <tr>
+                        <td>&nbsp;&nbsp;{{ maintenance.TR_ID }}</td>
+                        <td>{{ maintenance.schedule_ID }}</td>
+                        <td>&nbsp;&nbsp;{{ maintenance.maintenance_start_date }}</td>
+                        <td>&nbsp;{{ maintenance.maintenance_end_date }}</td>
+                        <td>&nbsp;&nbsp;{{ maintenance.new_TR_ID }}</td>
+                    </tr>                
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="card text-center"style="margin-top: 100px; height: 150px; margin-bottom: 0px; height: 100px;">
+                
+                <div class="card-body" style="padding-bottom: 0px; margin-bottom: 0px;">
+                    <ul class="list-inline">
+                        <li class="list-inline-item" style="text-decoration:none !important;"><a href="#">Home</a></li>
+                        <li class="list-inline-item"><a href="#">About</a></li>
+                        <li class="list-inline-item"><a href="#">Terms</a></li>
+                        <li class="list-inline-item"><a href="https://bombardier.com/en/privacy#:~:text=You%20have%20the%20right%20to%20object%20to%20our%20use%20of,purposes%20%E2%80%93%20to%20withdraw%20your%20consent">Privacy Policy</a></li>
+                    </ul>
+                    <p class="copyright">MMCS © 2022</p>
+                </div>
+                
+              </div>
+    </div>
+</body>
+{% endblock %}
+
+<script>
+//setTimeout(function(){
+//   window.location.reload(1);
+//}, 5000);
+
+document.getElementById("current_date").innerHTML = Date().slice(0,25);
+</script>
+
+
+</html>
+    

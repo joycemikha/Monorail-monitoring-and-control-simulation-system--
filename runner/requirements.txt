@@ -1,0 +1,13 @@
+matplotlib
+pygame
+numpy
+PyQt5
+pyrebase
+urllib3
+collection
+pyrebase
+flask
+flask_sqlalchemy
+flask_bootstrap
+pywin32
+pymysql
